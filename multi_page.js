@@ -55,16 +55,28 @@ http.createServer(function (req, res) {
                     return console.log(err);
                 }
 
-                items.forEach(company => {
-                    // log info to console
-                    console.log("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price);
+                // initialize array to store info to write to page
+                // instead of doing res.write in loop to prevent asynchronous issues
+                itemsStringArr = new Array();
 
-                    res.write("Testing");
+                items.forEach(company => {
+                    let infoString = "Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price;
+
+                    // log info to console
+                    console.log(infoString);
+
+                    itemsStringArr.push(infoString);
+
+                    // res.write("Testing");
 
                     // write info on page
-                    res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
+                    // res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
                 });
 
+                infoString.forEach(string => {
+                    res.write(string + "<br>");
+                });
+    
                 db.close();
             });
         });
