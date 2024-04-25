@@ -79,7 +79,7 @@ http.createServer(function (req, res) {
                 });
 
                 db.close();
-                res.end();
+                // res.end();
             });
         });
 
@@ -88,5 +88,5 @@ http.createServer(function (req, res) {
         // });
     }
 
-    res.end();
+    // res.end();
 }).listen(port);
