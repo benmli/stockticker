@@ -36,7 +36,7 @@ http.createServer(function (req, res) {
         
         // initialize array to store info to write to page
         // instead of doing res.write in loop to prevent asynchronous issues
-        itemsStringArr = new Array();
+        // itemsStringArr = new Array();
         
         MongoClient.connect(connStr, function(err, db) {
             if (err) {
@@ -65,21 +65,21 @@ http.createServer(function (req, res) {
                     // log info to console
                     console.log(infoString);
 
-                    itemsStringArr.push(infoString);
+                    // itemsStringArr.push(infoString);
 
                     // res.write("Testing");
 
                     // write info on page
-                    // res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
+                    res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
                 });
     
                 db.close();
             });
         });
 
-        itemsStringArr.forEach(string => {
-            res.write(string + "<br>");
-        });
+        // itemsStringArr.forEach(string => {
+        //     res.write(string + "<br>");
+        // });
     }
 
     res.end();
