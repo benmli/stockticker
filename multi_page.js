@@ -49,13 +49,18 @@ http.createServer(function (req, res) {
                 query = { company: searchVal };
             }
 
+            // find coresponding results based on search query, from collection
             collection.find(query).toArray(function(err, items) {
                 if (err) {
                     return console.log(err);
                 }
 
                 items.forEach(company => {
+                    // log info to console
                     console.log("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price);
+
+                    // write info on page
+                    res.write("<div>Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "</div>");
                 });
 
                 db.close();
