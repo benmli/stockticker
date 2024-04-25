@@ -34,6 +34,10 @@ http.createServer(function (req, res) {
         var searchVal = url.parse(req.url, true).query.searchValue;
         var searchType = url.parse(req.url, true).query.searchType;
         
+        // initialize array to store info to write to page
+        // instead of doing res.write in loop to prevent asynchronous issues
+        itemsStringArr = new Array();
+        
         MongoClient.connect(connStr, function(err, db) {
             if (err) {
                 return console.log(err);
@@ -55,10 +59,6 @@ http.createServer(function (req, res) {
                     return console.log(err);
                 }
 
-                // initialize array to store info to write to page
-                // instead of doing res.write in loop to prevent asynchronous issues
-                itemsStringArr = new Array();
-
                 items.forEach(company => {
                     let infoString = "Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price;
 
@@ -75,10 +75,10 @@ http.createServer(function (req, res) {
     
                 db.close();
             });
+        });
 
-            itemsStringArr.forEach(string => {
-                res.write(string + "<br>");
-            });
+        itemsStringArr.forEach(string => {
+            res.write(string + "<br>");
         });
     }
 
