@@ -74,7 +74,9 @@ http.createServer(function (req, res) {
                 });
     
                 // write company information strings to page
-                res.write(itemsStringArr);
+                itemsStringArr.forEach(string => {
+                    res.write(item + "<br>");
+                });
 
                 db.close();
                 res.end();
