@@ -60,7 +60,7 @@ http.createServer(function (req, res) {
                     console.log("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price);
 
                     // write info on page
-                    res.write("<div>Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "</div>");
+                    res.write("<p>Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "</p>");
                 });
 
                 db.close();
