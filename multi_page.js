@@ -72,12 +72,12 @@ http.createServer(function (req, res) {
                     // write info on page
                     // res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
                 });
-
-                infoString.forEach(string => {
-                    res.write(string + "<br>");
-                });
     
                 db.close();
+            });
+
+            itemsStringArr.forEach(string => {
+                res.write(string + "<br>");
             });
         });
     }
