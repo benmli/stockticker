@@ -59,8 +59,10 @@ http.createServer(function (req, res) {
                     // log info to console
                     console.log("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price);
 
+                    res.write("Testing");
+
                     // write info on page
-                    res.write("<p>Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "</p>");
+                    res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
                 });
 
                 db.close();
