@@ -1,0 +1,18 @@
+{
+    "name": "part2",
+    "version": "1.0.0",
+    "description": "part 2 of stock ticker app",
+    "main": "multi_page.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/benmli/cs20"
+    },
+    "scripts": {
+      "start": "node multi_page.js"
+    },
+    "author": "benjamin li",
+    "license": "ISC",
+    "dependencies": {
+        "mongodb": "4.0"
+    }
+}
