@@ -28,7 +28,7 @@ http.createServer(function (req, res) {
         res.write(form);
     }
     else if (path == "/process") {
-        res.write("Processing (check console for results)");
+        res.write("Processing :) <br>");
 
         // get search value and search type parameters from url
         var searchVal = url.parse(req.url, true).query.searchValue;
@@ -56,17 +56,17 @@ http.createServer(function (req, res) {
                 }
 
                 items.forEach(company => {
+                    var infoString = "Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price;
+
                     // log info to console
-                    console.log("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price);
+                    console.log(infoString);
                     
                     // write info on page
-                    res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
+                    res.write(infoString + "<br>");
                 });
 
                 db.close();
             });
         });
     }
-
-    // res.end();
 }).listen(port);
