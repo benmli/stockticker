@@ -57,7 +57,7 @@ http.createServer(function (req, res) {
 
                 // initialize array to store info to write to page
                 // instead of doing res.write in loop to prevent asynchronous issues
-                itemsStringArr = new Array();
+                // itemsStringArr = new Array();
 
                 items.forEach(company => {
                     let infoString = "Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price;
@@ -69,14 +69,14 @@ http.createServer(function (req, res) {
 
                     // res.write("Testing");
 
-                    // write info on page
-                    // res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
+                    //write info on page
+                    res.write("Company Name: " + company.company + "; Stock Ticker: " + company.ticker + "; Stock Share Price: " + company.price + "<br>");
                 });
     
-                // write company information strings to page
-                itemsStringArr.forEach(string => {
-                    res.write(item + "<br>");
-                });
+                // // write company information strings to page
+                // itemsStringArr.forEach(string => {
+                //     res.write(item + "<br>");
+                // });
 
                 db.close();
                 // res.end();
